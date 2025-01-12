@@ -203,3 +203,31 @@ public:
     }
 };
 
+int main()
+{
+    OrderCache cache;
+
+    Order order1("OrdId1", "SecId1", "Buy", 1000, "User1", "CompanyA");
+    Order order2("OrdId2", "SecId2", "Sell", 3000, "User2", "CompanyB");
+    Order order3("OrdId3", "SecId1", "Sell", 500, "User3", "CompanyA");
+    Order order4("OrdId4", "SecId2", "Buy", 600, "User4", "CompanyC");
+    Order order5("OrdId5", "SecId2", "Buy", 100, "User5", "CompanyB");
+    Order order6("OrdId6", "SecId3", "Buy", 1000, "User6", "CompanyD");
+    Order order7("OrdId7", "SecId2", "Buy", 2000, "User7", "CompanyE");
+    Order order8("OrdId8", "SecId2", "Sell", 5000, "User8", "CompanyE");
+
+    cache.addOrder(order1);
+    cache.addOrder(order2);
+    cache.addOrder(order3);
+    cache.addOrder(order4);
+    cache.addOrder(order5);
+    cache.addOrder(order6);
+    cache.addOrder(order7);
+    cache.addOrder(order8);
+
+    std::cout << "Matching size for SecId1: " << cache.getMatchingSizeForSecurity("SecId1") << std::endl;
+    std::cout << "Matching size for SecId2: " << cache.getMatchingSizeForSecurity("SecId2") << std::endl;
+    std::cout << "Matching size for SecId3: " << cache.getMatchingSizeForSecurity("SecId3") << std::endl;
+
+    return 0;
+}
